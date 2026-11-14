@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Current conditions and the next eight hours for four California cities, with a wind-wave animation by Toumas Solyman.">
+  <title>Weatherwave · Toumas Solyman</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./vendor/tween.umd.js" defer></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to forecast</a>
+  <main id="main" class="shell">
+    <header class="page-intro">
+      <h1>California forecast</h1>
+      <p>COMP 584 Project 5</p>
+    </header>
+
+    <div class="toolbar">
+      <div class="location-control">
+        <label for="city">Location</label>
+        <select id="city">
+          <option value="northridge">Northridge, CA</option>
+          <option value="santa-monica">Santa Monica, CA</option>
+          <option value="san-francisco">San Francisco, CA</option>
+          <option value="san-diego">San Diego, CA</option>
+        </select>
+      </div>
+      <button id="refresh" type="button">Refresh forecast</button>
+    </div>
+
+    <p id="status" class="status" role="status" aria-live="polite">Loading forecast…</p>
+    <noscript><p>Enable JavaScript to load forecast data and play the animation.</p></noscript>
+
+    <div class="overview">
+      <section class="panel current" aria-labelledby="location-heading" aria-busy="true">
+        <div class="current-top">
+          <div>
+            <p class="section-label">Current conditions</p>
+            <h2 id="location-heading">Northridge, CA</h2>
+          </div>
+          <span id="weather-icon" class="weather-icon" aria-hidden="true">—</span>
+        </div>
+        <div class="temperature" id="temperature">—</div>
+        <p class="condition" id="condition">Waiting for forecast</p>
+        <dl class="metrics">
+          <div><dt>Feels like</dt><dd id="feels-like">—</dd></div>
+          <div><dt>Humidity</dt><dd id="humidity">—</dd></div>
+          <div><dt>Wind</dt><dd id="wind">—</dd></div>
+        </dl>
+      </section>
+
+      <section class="panel animation-panel" aria-labelledby="animation-title">
+        <h2 id="animation-title">Wind-wave animation</h2>
+        <p class="signature" id="signature" role="img" aria-label="Toumas Solyman">Toumas Solyman</p>
+        <div class="animation-controls">
+          <span id="animation-note">Tween.js</span>
+          <button id="replay" type="button" disabled>Replay</button>
+        </div>
+      </section>
+    </div>
+
+    <section class="panel hourly" aria-labelledby="hourly-title" aria-busy="true">
+      <div class="section-heading">
+        <h2 id="hourly-title">Next 8 hours</h2>
+        <span>Local time</span>
+      </div>
+      <ul id="forecast" class="forecast-list" aria-label="Hourly forecast"></ul>
+      <p id="forecast-placeholder" class="forecast-placeholder">Waiting for forecast…</p>
+    </section>
+
+    <footer class="sources">
+      <p>Forecast data from <a href="https://open-meteo.com/en/docs">Open-Meteo</a></p>
+      <p>Wind-wave animation with <a href="https://tweenjs.github.io/tween.js/">Tween.js</a></p>
+    </footer>
+  </main>
+</body>
+</html>
